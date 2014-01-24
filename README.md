@@ -1,4 +1,4 @@
-songvis
-=======
+Song Visualizer and Annotator
+=============================
 
-Web-based song visualization using librosa
+Web-based song visualization and annotator.
