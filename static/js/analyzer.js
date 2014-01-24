@@ -3,6 +3,10 @@ $(function() {
     $('.tabs').tab();
 });
 
+$('#audioTest').bind('canplay', function() {
+  this.currentTime = 29; // jumps to 29th secs
+});
+
 // Retrieve the analysis object
 $.ajax({
     url: "../data/" + $("#song_id").val(),
