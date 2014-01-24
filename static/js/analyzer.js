@@ -5,7 +5,7 @@ $(function() {
 
 // Retrieve the analysis object
 $.ajax({
-    url: "/data/" + $("#song_id").val(),
+    url: "../data/" + $("#song_id").val(),
     dataType: "json"
 }).done(process_analysis);
 
@@ -38,15 +38,16 @@ function process_analysis(analysis) {
     analysis['beats'].push(analysis['duration']);
 
     // Header info
-//     $("#song_name")
-//         .text(analysis['filename']);
-//     $("#duration")
-//         .text(num_to_time(analysis['duration']));
+    // $("#song_name")
+    //     .text(analysis['filename']);
+    // $("#duration")
+    //     .text(num_to_time(analysis['duration']));
     $("#tempo")
         .text(analysis['tempo'].toFixed(2) + ' BPM');
 
     draw_meta( analysis['metadata'] );
 
+    // Plot the waveform
     draw_zoom( analysis['signal'], analysis['duration']);
 
     // Plot the beat chart
@@ -72,7 +73,6 @@ function process_analysis(analysis) {
     draw_heatmap(analysis['spectrogram'], analysis['beats'], '#spectrogram');
 
     // Draw the structure bundle
-
     draw_structure(analysis['beats'], analysis['links'], analysis['segments'], '#structplot');
 }
 
